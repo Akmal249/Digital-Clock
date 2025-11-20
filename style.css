@@ -1,0 +1,112 @@
+* {
+    --primary: #222;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Digital-7";
+}
+
+@font-face {
+    font-family: "Digital-7";
+    src: url("digital.ttf") format("truetype");
+    font-weight: normal;
+}
+
+@keyframes bg-change {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    height: 140px;
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2),
+                0 15px 45px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to left, hotpink, magenta, violet, hotpink);
+    background-size: 400% 100%;
+    transform: translate(-50%, -50%);
+    animation: bg-change 5s linear infinite alternate;
+}
+
+.container .clock {
+    display: flex;
+    position: absolute;
+    inset: 5px;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    border-radius: 18px;
+    background: linear-gradient(to left, hotpink, magenta, violet, hotpink);
+    background-size: 400% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: bg-change 5s linear infinite alternate;
+}
+
+.container .clock::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    background: var(--primary);
+    z-index: -1;
+}
+
+.clock .days, .month {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    margin: 8px 8px 0px;
+}
+
+.clock .days {
+    margin-top: 2px;
+}
+
+.clock .days span {
+    width: 100%;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.1);
+    margin: 4px auto 2px;
+    text-align: right;
+}
+
+.days span:nth-child(8) {
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: -6px;
+    margin-right: -147.5px;
+}
+
+.clock .month span {
+    width: 100%;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.1);
+    margin: 2px auto 2px;
+    text-align: left;
+}
+
+.month span:nth-child(4) {
+    margin-top: 20px;
+    margin-left: -12px;
+    margin-bottom: 12px;
+    font-size: 32px;
+}
+
+.clock .time {
+    font-size: 135px;
+    color: transparent;
+    margin-top: calc((100% - 135px) / 10);
+}
